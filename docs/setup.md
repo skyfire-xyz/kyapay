@@ -527,19 +527,9 @@ The Working Group will steward the development of the full **v1.0 specification*
 
 5.\_[Governance.md](http://Governance.md)
 
-This document provides the governance policy for specifications and other documents developed using the Community Specification process in a repository (each a “Working Group”). 
 
-[https://github.com/CommunitySpecification/Community\_Specification/blob/main/5.\_Governance.md](https://github.com/CommunitySpecification/Community_Specification/blob/main/5._Governance.md)
 
-6.\_[Contributing.md](http://Contributing.md)
 
-[https://github.com/CommunitySpecification/Community\_Specification/blob/main/6.\_Contributing.md](https://github.com/CommunitySpecification/Community_Specification/blob/main/6._Contributing.md) and add the below after the first paragraph:
 
-If you are interested in becoming a contributor, please contact xxx with the following information to indicate your interest:
-
-**Name:** John Doe  
-**Individual or Organization**: If you are representing an organization, please share the organization’s name  
-**Email:**   
-**Github Handle:** 
 
 
