@@ -542,21 +542,4 @@ If you are interested in becoming a contributor, please contact xxx with the fol
 **Email:**   
 **Github Handle:** 
 
-8\. \_Code\_of\_Conduct.md
 
-[https://github.com/CommunitySpecification/Community\_Specification/blob/main/8.\_Code\_of\_Conduct.md](https://github.com/CommunitySpecification/Community_Specification/blob/main/8._Code_of_Conduct.md) (can use something different from the template language if you prefer)
-
-LICENSE \- This document should be the source code license details, e.g. Apache 2.0, MIT   
-Example: [https://github.com/hyperledger/anoncreds-spec/blob/main/LICENSE](https://github.com/hyperledger/anoncreds-spec/blob/main/LICENSE)
-
-[MAINTAINERS.md](http://MAINTAINERS.md)
-
-**Active Maintainers** 
-
-| Name | Github               |
-| :---- |:---------------------|
-| **Ankit Agarwal** | **@skyfire-ankit**   |
-| **Supreet Kaur** | **@skyfire-supreet** |
-| **Andrew Stitt** | **@super-drew**      |
-
-Clear guidance on how to become a maintainer and remove a maintainer will be provided when the Working Group is formally launched.  
