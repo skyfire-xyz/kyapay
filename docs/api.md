@@ -1,5 +1,157 @@
 # KYAPay Example API
 
+### Create Token
+
+#### API Endpoints
+
+* Method  
+  * POST  
+* Path  
+  * {API endpoint}/api/v1/tokens  
+* Request Body  
+  * {  
+    * type: \<string\>,  
+      * One of ‘kya’ | ‘pay’ | ‘kya+pay’  
+    * buyerTag: \<string\>,  
+      * Buyer’s internal identifier for the transaction / token  
+    * tokenAmount: \<string\>,  
+      * Optional  
+      * Must include an amount if this is a ‘pay’ or ‘kya+pay’ token  
+      * Must be  
+        * Greater than 0  
+        * Greater than the minimum token amount specified in the seller service (if any)  
+        * Less than or equal to the balance in your agent’s wallet  
+      * We have selected string representation as a way to preserve precision in numbers.  
+    * sellerServiceId: \<UUID\>,  
+      * You can get the seller service ID from the Skyfire marketplace  
+    * expiresAt: \<number\>,  
+      * Optional  
+      * Default: 24 hours in the future  
+      * Seconds since the Unix epoch  
+      * Must be between 10 seconds and 24 hours (86,400 seconds) in the future.  
+    * identityPermissions: \<string\[\]\>  
+      * Optional  
+      * Default: empty array  
+      * Can be specified if this is a ‘kya’ or ‘kya+pay’ token.  
+      * Additional identity fields to include in the token.  
+      * Allowed field names are  
+        * If you have completed an Individual verification  
+          * 'selectedCountryCode'  
+          * 'selectedIdClass'  
+          * 'addressStreet1'  
+          * 'addressStreet2'  
+          * 'addressCity'  
+          * 'addressSubdivision'  
+          * 'addressPostalCode'  
+          * 'addressCountryCode'  
+          * 'birthdate'  
+          * 'expirationDate'  
+          * 'nameFirst'  
+          * 'nameMiddle'  
+          * 'nameLast'  
+          * 'phoneNumber'  
+          * 'issueDate'  
+          * 'issuingAuthority’  
+        * If you have completed a Business verification  
+          * 'businessName'  
+          * 'businessPhysicalAddressFull'  
+          * 'businessPhysicalAddressCity'  
+          * 'businessPhysicalAddressCountryCode'  
+          * 'businessPhysicalAddressPostalCode'  
+          * 'businessPhysicalAddressStreet1'  
+          * 'businessPhysicalAddressStreet2'  
+          * 'businessPhysicalAddressSubdivision'  
+          * 'businessRegisteredAddressCity'  
+          * 'businessRegisteredAddressCountryCode'  
+          * 'businessRegisteredAddressPostalCode'  
+          * 'businessRegisteredAddressStreet1'  
+          * 'businessRegisteredAddressStreet2'  
+          * 'businessRegisteredAddressSubdivision'  
+          * 'businessTaxIdentificationNumber'  
+          * 'birthdate'  
+          * 'nameFirst'  
+          * 'nameMiddle'  
+          * 'nameLast'  
+          * 'phoneNumber'  
+          * 'selectedCountryCode'  
+  * }  
+* Response  
+  * Success code  
+    * 200  
+  * Body  
+    * {  
+      * token: \<string\>  
+        * The signed JWT  
+    * }  
+      
+
+#### Create token sample code
+
+Curl
+
+```shell
+curl --request POST \
+     --url https://api-qa.skyfire.xyz/api/v1/tokens \
+     --header 'skyfire-api-key: <Skyfire Buyer Agent API Key>' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "type": "pay",
+  "buyerTag": "Playground-ah9nbdnc6y9",
+  "tokenAmount": "0.005",
+  "sellerServiceId": "<Skyfire Seller Service ID>",
+  "expiresAt": 1750201115
+}
+'
+```
+
+Node / TypeScript
+
+```ts
+(async () => {
+  const response = await fetch('https://api-qa.skyfire.xyz/api/v1/tokens', {
+    method: 'POST',
+    headers: {
+      'skyfire-api-key': '<Skyfire Buyer Agent API Key>',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      type: 'pay',
+      buyerTag: 'Playground-ah9nbdnc6y9',
+      tokenAmount: '0.005',
+      sellerServiceId: '<Skyfire Seller Service ID>',
+      expiresAt: 1750201115
+    }),
+  });
+
+  const data = await response.json();
+  console.log(data);
+})();
+```
+
+Python
+
+```py
+import requests
+import json
+
+url = 'https://api-qa.skyfire.xyz/api/v1/tokens'
+headers = {
+    'skyfire-api-key': '<Skyfire Buyer Agent API Key>',
+    'content-type': 'application/json',
+}
+payload = {
+    'type': 'pay',
+    'buyerTag': 'Playground-ah9nbdnc6y9',
+    'tokenAmount': '0.005',
+    'sellerServiceId': '<Skyfire Seller Service ID>',
+    'expiresAt': 1750201115
+}
+
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+print(response.json())
+```
+
 #### API Keys
 
 * You can see the API keys that you have created for your seller agents / seller services.
