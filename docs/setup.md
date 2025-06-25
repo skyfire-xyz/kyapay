@@ -525,7 +525,7 @@ The Working Group will steward the development of the full **v1.0 specification*
 4.\_License.md  
 [https://github.com/CommunitySpecification/Community\_Specification/blob/main/4.\_License.md](https://github.com/CommunitySpecification/Community_Specification/blob/main/4._License.md)
 
-5.\_[Governance.md](http://Governance.md)
+
 
 
 
