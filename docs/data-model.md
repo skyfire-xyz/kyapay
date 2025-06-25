@@ -1,4 +1,4 @@
-# Token Data Model
+# KYAPay Token Data Model
 
 * **KYA Token**: (`"typ": "kya+JWT")` Contains identity information only, used for account creation, login, or verifying the agent or its owner.  
     
