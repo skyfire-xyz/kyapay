@@ -3,7 +3,7 @@
 All API interactions in the example require authenticated access via API keys, which are created per agent (buyer or seller) in the Skyfire dashboard. For setup details, go to https://docs.skyfire.xyz/docs/introduction.
 
 ### Onboard Buyers
-Buyer agents interact with seller services by creating and sending tokens. These tokens convey identity (KYA), payment, or both. The token format and transmission method are determined by the seller's API specification. See how to set up a buyer account in Skyfire:https://docs.skyfire.xyz/docs/getting-started-2. 
+Buyer agents interact with seller services by creating and sending tokens. These tokens convey identity (KYA), payment, or both. The token format and transmission method are determined by the seller's API specification. See [how to set up a buyer account](https://docs.skyfire.xyz/docs/getting-started-2) in Skyfire. 
 
 ### Create Token
 
