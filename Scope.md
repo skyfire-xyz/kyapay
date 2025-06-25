@@ -1,0 +1,12 @@
+# Scope
+
+We have released the core token structure and a set of example APIs in this 
+repository to invite early feedback from the community. This release is intended
+as a starting point and serves to gather input, validate design decisions, and
+assess interest in forming or joining a formal Working Group.
+
+The Working Group will steward the development of the full **v1.0 specification**,
+and its scope of work will be clearly defined upon that release. We welcome
+participation from developers, protocol designers, infrastructure providers, and
+other stakeholders interested in shaping a shared identity and transaction layer
+for agentic AI.

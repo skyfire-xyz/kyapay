@@ -502,28 +502,8 @@ Node / TypeScript Example
 };
 ```
 
-**Step 3:**   
-Add license related files (marked in yellow) to the repo. [Hyperledger Anoncreds](https://github.com/hyperledger/anoncreds-spec) is a good example of how to apply the license. Since we don’t have a Working Group yet, we can start somewhere simpler and set everything up for the further development of the KYAPay Protocol
 
-0.\_CS\_Contributor\_License\_Agreement.md    
-[https://github.com/CommunitySpecification/Community\_Specification/blob/main/.0\_CS\_Contributor\_License\_Agreement.md](https://github.com/CommunitySpecification/Community_Specification/blob/main/.0_CS_Contributor_License_Agreement.md)
 
-1.\_Community\_Specification\_License[\-v1.md](http://-v1.md)  
-[https://github.com/CommunitySpecification/Community\_Specification/blob/main/1.\_Community\_Specification\_License-v1.md](https://github.com/CommunitySpecification/Community_Specification/blob/main/1._Community_Specification_License-v1.md)
-
-2.\_Scope.md
-
-**Scope**  
-We have released the core token structure and a set of example APIs in this repository to invite early feedback from the community. This release is intended as a starting point and serves to gather input, validate design decisions, and assess interest in forming or joining a formal Working Group.
-
-The Working Group will steward the development of the full **v1.0 specification**, and its scope of work will be clearly defined upon that release. We welcome participation from developers, protocol designers, infrastructure providers, and other stakeholders interested in shaping a shared identity and transaction layer for agentic AI.
-
-3.\_Notices.md
-
-[https://github.com/CommunitySpecification/Community\_Specification/blob/main/3.\_Notices.md](https://github.com/CommunitySpecification/Community_Specification/blob/main/3._Notices.md)
-
-4.\_License.md  
-[https://github.com/CommunitySpecification/Community\_Specification/blob/main/4.\_License.md](https://github.com/CommunitySpecification/Community_Specification/blob/main/4._License.md)
 
 
 
