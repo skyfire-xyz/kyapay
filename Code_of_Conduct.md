@@ -1,0 +1,1 @@
+[https://github.com/CommunitySpecification/Community\_Specification/blob/main/8.\_Code\_of\_Conduct.md](https://github.com/CommunitySpecification/Community_Specification/blob/main/8._Code_of_Conduct.md) (can use something different from the template language if you prefer)
