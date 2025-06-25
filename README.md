@@ -7,7 +7,7 @@ agent-to-service interactions using JWT tokens. The full specification v1.0 of
 KYAPay is aimed to be released soon in this repo.
 
 * The [KYAPay Protocol Launch Whitepaper]
-* The [core JWT token data model] (https://github.com/skyfire-xyz/kyapay/blob/main/docs/data-model.md)
+* The [core JWT token data model](https://github.com/skyfire-xyz/kyapay/blob/main/docs/data-model.md)
 * The [Example API](https://github.com/skyfire-xyz/kyapay/blob/main/docs/example-api.md)
 
 * This work is being conducted under the 
