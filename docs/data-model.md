@@ -1,5 +1,13 @@
 # KYAPay Token Data Model
 
+At its core, they KYAPay token is a standards-compliant JWT that embeds:
+
+* **Identity claims**: Attributes about the agent or user, such as business name, email, or unique agent ID.  
+
+* **Payment metadata**: A reference to a pre-authorized payment token, subscription, or credit balance.  
+
+Based on existing implementations of KYAPay, three types of token are defined:
+
 * **KYA Token**: (`"typ": "kya+JWT")` Contains identity information only, used for account creation, login, or verifying the agent or its owner.  
     
 * **Pay Token**: (`"typ": "pay+JWT")` Contains payment authorization only, used when the agent is already authenticated and needs to complete a transaction.
