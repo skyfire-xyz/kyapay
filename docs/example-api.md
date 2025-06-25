@@ -1,6 +1,6 @@
 # Skyfire KYAPay Example API
 
-All API interactions in the example require authenticated access via API keys, which are created per agent (buyer or seller) in the Skyfire dashboard. For setup details, go to https://docs.skyfire.xyz/docs/introduction.
+All API interactions in the example require authenticated access via API keys, which are created per agent (buyer or seller) in the Skyfire dashboard. For setup details, check out [Skyfire's documentation site](https://docs.skyfire.xyz/docs/introduction).
 
 ### Onboard Buyers
 Buyer agents interact with seller services by creating and sending tokens. These tokens convey identity (KYA), payment, or both. The token format and transmission method are determined by the seller's API specification. See [how to set up a buyer account](https://docs.skyfire.xyz/docs/getting-started-2) in Skyfire. 
@@ -168,7 +168,7 @@ print(response.json())
 * You can see all the charges that have been made by your seller services, on the respective pay and kya+pay tokens that buyer agents have sent to them.
 
 ### Onboard Sellers 
-Sellers and seller agents are responsible for validating incoming tokens, extracting necessary identity or payment data, and charging tokens once goods or services have been delivered. Skyfire example tokens can be verified using standard JWT libraries and JWKS key sets. See how to set up a seller account in Skyfire: https://docs.skyfire.xyz/docs/creating-a-seller-account.
+Sellers and seller agents are responsible for validating incoming tokens, extracting necessary identity or payment data, and charging tokens once goods or services have been delivered. Skyfire example tokens can be verified using standard JWT libraries and JWKS key sets. See [how to set up a seller account](https://docs.skyfire.xyz/docs/creating-a-seller-account) in Skyfire: .
 
 ### Verify Token
 
