@@ -1,4 +1,4 @@
-# Skyfire KYAPay API
+# KYAPay Example API
 
 #### API Keys
 
