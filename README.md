@@ -6,9 +6,9 @@ KYAPay, an identity-linked payment protocol for agent-to-agent and
 agent-to-service interactions using JWT tokens. The full specification v1.0 of 
 KYAPay is aimed to be released soon in this repo.
 
-* [KYAPay Protocol Whitepaper]
-* [Token Data Model](./docs/data-model.md)
-* Example API: [Skyfire KYAPay API](./docs/example-api.md)
+* The KYAPay Protocol Launch Whitepaper:
+* The core JWT token data model: https://github.com/skyfire-xyz/kyapay/blob/main/docs/data-model.md
+* The KYAPay Example API: https://github.com/skyfire-xyz/kyapay/blob/main/docs/example-api.md
 
 * This work is being conducted under the 
   [Community Specification License v1.0](https://github.com/hyperledger/anoncreds-spec/blob/main/1._Community_Specification_License-v1.md)
