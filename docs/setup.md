@@ -1,14 +1,6 @@
 # How to set up the KYAPay Protocol repo and apply the CSL 
 
-**Step 1:**
-Create a repo for the specification  
-   
-Example: skyfire / kyapay-spec 
-
-**Step 2:**   
-Add the token structure and API specifications into the repo
-
-## Token Data Model: 
+## Token Data Model:
 
 * **KYA Token**: (`"typ": "kya+JWT")` Contains identity information only, used for account creation, login, or verifying the agent or its owner.  
     
