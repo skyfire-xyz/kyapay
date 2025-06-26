@@ -4,7 +4,7 @@ This repository contains the source content for the KYAPay open protocol, an ide
 agent-to-service interactions using JWT tokens. It currently includes the core token structure and a set of example APIs of 
 KYAPay. The full specification v1.0 of KYAPay is aimed to be released soon in this repo.
 
-* The [KYAPay Protocol Launch Whitepaper](https://kyapay.org/)
+* The [KYAPay Protocol Launch Whitepaper](https://www.kyapay.ai/)
 * The [core JWT data model](https://github.com/skyfire-xyz/kyapay/blob/main/docs/data-model.md)
 * The [Example API](https://github.com/skyfire-xyz/kyapay/blob/main/docs/example-api.md)
 
