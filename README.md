@@ -9,7 +9,7 @@ KYAPay. The full specification v1.0 of KYAPay is aimed to be released soon in th
 * The [Example API](https://github.com/skyfire-xyz/kyapay/blob/main/docs/example-api.md)
 
 * This work is being conducted under the 
-  [Community Specification License v1.0](https://github.com/CommunitySpecification/Community_Specification/blob/main/1._Community_Specification_License-v1.md)
+  [Community Specification License v1.0](https://github.com/skyfire-xyz/kyapay/blob/main/1._Community_Specification_License-v1.md)
 
 We are in active conversations with partners and ecosystem stakeholders about 
 collaboratively developing the KYAPay Protocol. Once the Working Group is 
