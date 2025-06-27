@@ -32,10 +32,34 @@ A TypeScript project for testing and verifying KYA (Know Your Agent) tokens from
    # Edit .env with your actual values
    ```
 
-4. Run the verifier:
+4. **Run in development mode (TypeScript, hot reload):**
    ```bash
-    npx tsx src/index.ts
+   npm run dev
    ```
+
+5. **Build and run in production mode:**
+   ```bash
+   npm run build
+   npm start
+   ```
+
+6. **(Alternative) Run directly with tsx:**
+   ```bash
+   npx tsx src/index.ts
+   ```
+
+## Available Scripts
+
+| Script         | Description                                 |
+| --------------|---------------------------------------------|
+| npm run dev   | Run the verifier in development mode (ts-node) |
+| npm run build | Build the project to the dist/ directory      |
+| npm start     | Run the compiled verifier from dist/          |
+| npm run clean | Remove the dist/ directory                    |
+| npm run test  | Run tests with Vitest                         |
+| npm run lint  | Lint the codebase with ESLint                 |
+| npm run lint:fix | Auto-fix lint issues                       |
+| npm run type-check | Type-check the codebase                  |
 
 ## Configuration
 
@@ -57,8 +81,20 @@ EXPECTED_AUD=your-agent-account-id
 
 ### Command Line
 
+**Development mode:**
 ```bash
- npx tsx src/index.ts
+npm run dev
+```
+
+**Production mode:**
+```bash
+npm run build
+npm start
+```
+
+**Direct (tsx):**
+```bash
+npx tsx src/index.ts
 ```
 
 ### Programmatic Usage

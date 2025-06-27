@@ -6,9 +6,15 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "ts-node src/index.ts",
-    "build": "tsc",
+    "build": "npm run clean && tsc",
+    "prebuild": "npm run clean",
+    "postbuild": "echo 'Build completed successfully!'",
+    "clean": "rm -rf dist",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "type-check": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +23,7 @@
   "dependencies": {
     "dotenv": "^16.5.0",
     "jose": "^6.0.11",
+    "package.json": "^2.0.1",
     "uuid": "^11.1.0"
   },
   "devDependencies": {

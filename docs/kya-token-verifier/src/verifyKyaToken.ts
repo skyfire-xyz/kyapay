@@ -1,8 +1,8 @@
 import { jwtVerify, createRemoteJWKSet, errors } from 'jose';
 import { v4 as uuidv4, validate as isUUID } from 'uuid';
 
-const JWKS_URL = 'https://app.skyfire.xyz/.well-known/jwks.json';
 const EXPECTED_ISSUER = 'https://app.skyfire.xyz/';
+const JWKS_URL = `${EXPECTED_ISSUER}.well-known/jwks.json`;
 const EXPECTED_ALG = 'ES256';
 
 // Simple email regex (RFC 5322-like)
@@ -23,8 +23,8 @@ export async function verifyKyaToken(
   try {
     // Verify the JWT token and get payload
     const { payload: verifiedPayload } = await jwtVerify(token, JWKS, {
-      // issuer: EXPECTED_ISSUER,
-      // audience: expectedAud,
+      issuer: EXPECTED_ISSUER,
+      audience: expectedAud,
       algorithms: [EXPECTED_ALG]
     });
     payload = verifiedPayload;

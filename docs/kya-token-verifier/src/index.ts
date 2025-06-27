@@ -1,14 +1,16 @@
 import 'dotenv/config';
 import { verifyKyaToken } from './verifyKyaToken';
 
+// Define the API response type
+interface TokenResponse {
+  token: string;
+}
+
 const api_key = process.env.SKYFIRE_API_KEY!;
 const ssi = process.env.EXPECTED_SSI!;
 const aud = process.env.EXPECTED_AUD!;
 
 (async () => {
-  console.log('🔐 KYA Token Verifier');
-  console.log('=====================\n');
-
 
   if (!ssi) {
     console.error('❌ Error: EXPECTED_SSI environment variable is required');
@@ -46,7 +48,7 @@ const aud = process.env.EXPECTED_AUD!;
       throw new Error(`Failed to fetch token: ${response.status} ${response.statusText}`);
     }
 
-    const responseData = await response.json();
+    const responseData = await response.json() as TokenResponse;
     const fetchedToken = responseData.token;
 
     console.log("Token fetched successfully:", fetchedToken.substring(0, 50) + "...");
