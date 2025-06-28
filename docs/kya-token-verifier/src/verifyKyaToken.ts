@@ -38,46 +38,14 @@ export async function verifyKyaToken(
     return { error: `JWT verification failed: ${message} (${code ?? 'no-code'})` };
   }
 
-  const currentTime = Math.floor(Date.now() / 1000);
   const errorsList: string[] = [];
 
-  // ssi claim check
+  //ssi claim check
   if (payload.ssi !== expectedSsi) {
     errorsList.push(`Invalid 'ssi'. Expected '${expectedSsi}', got '${payload.ssi}'`);
   }
-
-  // iat
-  if (typeof payload.iat !== 'number' || payload.iat > currentTime) {
-    errorsList.push(`Invalid 'iat'. Must be in the past. Got: ${payload.iat}`);
-  }
-
-  // exp
-  if (typeof payload.exp !== 'number' || payload.exp < currentTime) {
-    errorsList.push(`Token has expired. 'exp' = ${payload.exp}`);
-  }
-
-  // iss
-  if (payload.iss !== EXPECTED_ISSUER) {
-    errorsList.push(`Invalid 'iss'. Expected '${EXPECTED_ISSUER}', got '${payload.iss}'`);
-  }
-
-  // jti
-  if (!isUUID(payload.jti)) {
-    errorsList.push(`Invalid or missing 'jti'. Must be a UUID`);
-  }
-
-  // aud
-  if (payload.aud !== expectedAud) {
-    errorsList.push(`Invalid 'aud'. Expected '${expectedAud}', got '${payload.aud}'`);
-  }
-
-  // sub
-  if (!isUUID(payload.sub)) {
-    errorsList.push(`Invalid or missing 'sub'. Must be a UUID`);
-  }
-
-  // bid
-  if (typeof payload.bid !== 'object' || payload.bid === null) {
+   // bid
+   if (typeof payload.bid !== 'object' || payload.bid === null) {
     errorsList.push(`Missing or invalid 'bid'. Must be an object`);
   } else {
     const email = payload.bid.skyfireEmail;
