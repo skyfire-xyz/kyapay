@@ -9,9 +9,9 @@ const JWT_AUDIENCE = "<SELLER_ID>";
 const JWT_SPS = "<PRICE_MODEL_FOR_SELLER_SERVICE>";
 const JWT_SPR = "<PRICE_FOR_SELLER_SERVICE>";
 
-type VerifyOk = { success: true; payload: JWTPayload };
-type VerifyErr = { success?: false; error: string; message: string };
-type VerifyResult = VerifyOk | VerifyErr;
+type VerifySuccess = { success: true; payload: JWTPayload };
+type VerifyError = { success?: false; error: string; message: string };
+type VerifyResult = VerifySuccess | VerifyError;
 
 async function verifyKyaPayToken(token: string): Promise<VerifyResult> {
   let payload: JWTPayload;
@@ -96,14 +96,14 @@ async function verifyKyaPayToken(token: string): Promise<VerifyResult> {
   }
 
   if (payload.sps !== JWT_SPS) {
-    console.error("Invalid Price Model:", (payload as any).sps);
+    console.error("Invalid Price Model:", payload.sps);
     return { error: "invalid_sps", message: "Price Model does not match seller service." };
   }
 
   if (payload.spr !== JWT_SPR) {
-    console.error("Invalid Price:", (payload as any).spr);
+    console.error("Invalid Price:", payload.spr);
     return { error: "invalid_spr", message: "Price does not match seller service." };
   }
 
-  return { success: true, payload: payload as VerifyOk["payload"] };
+  return { success: true, payload: payload as VerifySuccess["payload"] };
 }
