@@ -1,0 +1,22 @@
+{
+  "name": "verify-kya-pay-token",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/validator": "^13.15.2",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "jose": "^6.0.12",
+    "validator": "^13.15.15"
+  }
+}
