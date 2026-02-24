@@ -61,8 +61,8 @@ def verifyKyaPayToken(token):
         print("JWT verification failed:", err)
         return {"error": "invalid_token", "message": "JWT verification failed: invalid token."}
 
-    # Validate skyfireEmail
-    skyfire_email = decoded_payload.get("bid", {}).get("skyfireEmail")
+    # Validate mail
+    skyfire_email = decoded_payload.get("bid", {}).get("email")
     if not validators.email(skyfire_email):
         print("Invalid email format")
         return {"error": "invalid_email", "message": "Invalid email format."}

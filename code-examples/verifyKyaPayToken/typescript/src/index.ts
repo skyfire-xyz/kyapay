@@ -37,9 +37,9 @@ async function verifyKyaPayToken(token: string): Promise<VerifyResult> {
     return { success: false, error: "invalid_typ", message: "typ should be kya+pay+JWT" };
   }
 
-  // Validate skyfireEmail
-  const skyfireEmail = (payload as any)?.bid?.skyfireEmail;
-  if (!validator.isEmail(skyfireEmail)) {
+  // Validate email
+  const email = (payload as any)?.bid?.email;
+  if (!validator.isEmail(email)) {
     console.error("Invalid email format");
     return { success: false, error: "invalid_email", message: "Invalid email format." };
   }
