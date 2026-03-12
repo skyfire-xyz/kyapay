@@ -8,11 +8,11 @@ At its core, they KYAPay token is a standards-compliant JWT that embeds:
 
 Based on existing implementations of KYAPay, three types of token are defined:
 
-* **KYA Token**: (`"typ": "kya+JWT")` Contains identity information only, used for account creation, login, or verifying the agent or its owner.  
+* **KYA Token**: (`"typ": "kya+jwt")` Contains identity information only, used for account creation, login, or verifying the agent or its owner.  
     
-* **Pay Token**: (`"typ": "pay+JWT")` Contains payment authorization only, used when the agent is already authenticated and needs to complete a transaction.
+* **Pay Token**: (`"typ": "pay+jwt")` Contains payment authorization only, used when the agent is already authenticated and needs to complete a transaction.
 
-* **KYA \+ Pay Token**: (`"typ": "kya+pay+JWT")` Combines identity and payment data, enabling seamless guest checkout, where an agent can both identify itself and pay in a single interaction.
+* **KYAPay Token**: (`"typ": "kya-pay+jwt")` Combines identity and payment data, enabling seamless guest checkout, where an agent can both identify itself and pay in a single interaction.
 
 Header
 
@@ -20,7 +20,7 @@ Header
 {
   "kid": "<JWK Key ID>",
   "alg": "ES256",
-  "typ": "kya+pay+JWT" // or "kya+JWT" or "pay+JWT"
+  "typ": "kya-pay+jwt" // or "kya+jwt" or "pay+jwt"
 }
 ```
 
