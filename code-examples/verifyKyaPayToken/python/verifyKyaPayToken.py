@@ -53,9 +53,9 @@ def verifyKyaPayToken(token):
         )
         protected_header = jwt.get_unverified_header(token)
         typ = protected_header.get("typ")
-        if typ not in ["kya+pay+JWT"]:
+        if typ not in ["kya-pay+jwt"]:
             print("Invalid typ:", typ)
-            return {"error": "invalid_typ", "message": "typ should be kya+pay+JWT"}
+            return {"error": "invalid_typ", "message": "typ should be kya-pay+jwt"}
         decoded_payload = payload
     except JWTError as err:
         print("JWT verification failed:", err)
