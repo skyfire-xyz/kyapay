@@ -16,12 +16,12 @@ Buyer agents interact with seller services by creating and sending tokens. These
 * Request Body  
   * {  
     * type: \<string\>,  
-      * One of ‘kya’ | ‘pay’ | ‘kya+pay’  
+      * One of ‘kya’ | ‘pay’ | ‘kya-pay’  
     * buyerTag: \<string\>,  
       * Buyer’s internal identifier for the transaction / token  
     * tokenAmount: \<string\>,  
       * Optional  
-      * Must include an amount if this is a ‘pay’ or ‘kya+pay’ token  
+      * Must include an amount if this is a ‘pay’ or ‘kya-pay’ token  
       * Must be  
         * Greater than 0  
         * Greater than the minimum token amount specified in the seller service (if any)  
@@ -37,7 +37,7 @@ Buyer agents interact with seller services by creating and sending tokens. These
     * identityPermissions: \<string\[\]\>  
       * Optional  
       * Default: empty array  
-      * Can be specified if this is a ‘kya’ or ‘kya+pay’ token.  
+      * Can be specified if this is a ‘kya’ or ‘kya-pay’ token.  
       * Additional identity fields to include in the token.  
       * Allowed field names are  
         * If you have completed an Individual verification  
@@ -161,11 +161,11 @@ print(response.json())
 
 * You can see the API keys that you have created for your seller agents / seller services.
 * You can deactivate a key and / or create new ones.
-* Your seller agents / seller services will use an API key to charge pay and kya+pay tokens.
+* Your seller agents / seller services will use an API key to charge pay and kya-pay tokens.
 
 #### Charges
 
-* You can see all the charges that have been made by your seller services, on the respective pay and kya+pay tokens that buyer agents have sent to them.
+* You can see all the charges that have been made by your seller services, on the respective pay and kya-pay tokens that buyer agents have sent to them.
 
 ### Onboard Sellers 
 Sellers and seller agents are responsible for validating incoming tokens, extracting necessary identity or payment data, and charging tokens once goods or services have been delivered. Skyfire example tokens can be verified using standard JWT libraries and JWKS key sets. See [how to set up a seller account](https://docs.skyfire.xyz/docs/creating-a-seller-account) in Skyfire: .
@@ -189,7 +189,7 @@ const { payload, protectedHeader } = await jose.jwtVerify(
 
 You can verify one or more of the following
 
-* In ‘kya’ tokens (‘typ’ is ‘kya+JWT’)
+* In ‘kya’ tokens (‘typ’ is ‘kya+jwt’)
   * Signature
   * ‘alg’ claim is ‘ES256’
   * ‘ssi’ claim is set to your Skyfire seller service ID
@@ -217,7 +217,7 @@ You can verify one or more of the following
   * ‘cur’ claim is set to ‘USD’
   * ‘sps’ claim matches the pricing scheme that you configured in your seller service
   * ‘spr’ claim matches the price that you configured in your seller service
-* In ‘kya+pay’ tokens (‘typ’ is ‘kya+pay+JWT’)
+* In ‘kya-pay’ tokens (‘typ’ is ‘kya-pay+jwt’)
 
 Both ‘kya’ and ‘pay’ token validations as above
 
@@ -243,7 +243,7 @@ Both ‘kya’ and ‘pay’ token validations as above
           * We will be adding a token introspection API that you can use to determine the balance on a token if you are unable to keep track of your partial amount charges.
       * We have selected string representation as a way to preserve precision in numbers.
 * Processing
-  * The token ‘typ’ must be ‘pay’ or ‘kya+pay’.
+  * The token ‘typ’ must be ‘pay’ or ‘kya-pay’.
   * The seller is expected to enforce the ‘exp’ claim of a token i.e. reject tokens that have expired.
   * However, a seller is allowed to charge a token for up to 24 hours after it has expired.
     * In this case, Skyfire assumes that the seller did not accept an already expired token from the buyer.
@@ -305,7 +305,7 @@ Node / TypeScript Example
   /**
    * Charge Token
    */
-  if (decodedHeader.typ === 'kya+pay+JWT' || decodedHeader.typ === 'pay+JWT') {
+  if (decodedHeader.typ === 'kya-pay+jwt' || decodedHeader.typ === 'pay+jwt') {
     try {
       const response = await chargeToken(skyfireToken);
       responseMessage.push(response);
