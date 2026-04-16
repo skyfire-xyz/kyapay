@@ -38,7 +38,7 @@ async function verifyKyaPayToken(token: string): Promise<VerifyResult> {
   }
 
   // Validate email
-  const email = (payload as any)?.bid?.email;
+  const email = (payload as any)?.hid?.email;
   if (!validator.isEmail(email)) {
     console.error("Invalid email format");
     return { success: false, error: "invalid_email", message: "Invalid email format." };
@@ -79,12 +79,12 @@ async function verifyKyaPayToken(token: string): Promise<VerifyResult> {
   }
 
   // Pay-related fields
-  const value = (payload.value as string)
+  const value = (payload.val as string)
   if (isNaN(validator.toInt(value)) || parseInt(value)<=0) {
     return { success: false, error: "invalid_value", message: "Token value must be a positive integer." };
   }
 
-  const amount = (payload.amount as string);
+  const amount = (payload.amt as string);
   if (isNaN(validator.toFloat(amount)) || parseFloat(amount)<=0) {
     return { success: false, error: "invalid_amount", message: "Token amount must be a positive number." };
   }
