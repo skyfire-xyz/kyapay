@@ -62,7 +62,7 @@ def verifyKyaPayToken(token):
         return {"error": "invalid_token", "message": "JWT verification failed: invalid token."}
 
     # Validate mail
-    skyfire_email = decoded_payload.get("bid", {}).get("email")
+    skyfire_email = decoded_payload.get("hid", {}).get("email")
     if not validators.email(skyfire_email):
         print("Invalid email format")
         return {"error": "invalid_email", "message": "Invalid email format."}
@@ -94,11 +94,11 @@ def verifyKyaPayToken(token):
             return {"error": f"invalid_{field}", "message": f"Invalid {field}: not a valid UUID."}
         
     # Validate pay related fields
-    value = to_int(decoded_payload.get("value"))
+    value = to_int(decoded_payload.get("val"))
     if value is None or value <= 0:
         return {"error": "invalid_value", "message": "Token value must be a positive integer."}
 
-    amount = to_decimal(decoded_payload.get("amount"))
+    amount = to_decimal(decoded_payload.get("amt"))
     if amount is None or amount <= 0:
         return {"error": "invalid_amount", "message": "Token amount must be a positive number."}
 
