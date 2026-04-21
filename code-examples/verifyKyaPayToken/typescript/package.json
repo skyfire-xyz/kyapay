@@ -17,6 +17,6 @@
   },
   "dependencies": {
     "jose": "^6.0.12",
-    "validator": "^13.15.15"
+    "validator": "^13.15.22"
   }
 }
