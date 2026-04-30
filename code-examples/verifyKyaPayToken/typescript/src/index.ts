@@ -1,7 +1,6 @@
 import { createRemoteJWKSet, jwtVerify } from "jose";
 import type { JWTPayload, JWSHeaderParameters} from "jose";
 import validator from "validator";
-import { fileURLToPath } from "node:url";
 
 /**
  * Supports production and sandbox.
@@ -190,25 +189,4 @@ export async function verifyKyaPayToken(token: string): Promise<VerifyResult> {
     header: header as VerifySuccess["header"],
     payload: payload as VerifySuccess["payload"],
   };
-}
-
-const isDirectExecution = process.argv[1] === fileURLToPath(import.meta.url);
-
-if (isDirectExecution) {
-  const token = process.argv[2];
-
-  if (!token) {
-    console.error("Usage: npx tsx src/index.ts <JWT>");
-    process.exit(1);
-  }
-
-  verifyKyaPayToken(token)
-    .then((result) => {
-      console.log(JSON.stringify(result, null, 2));
-      process.exit(result.success ? 0 : 1);
-    })
-    .catch((err) => {
-      console.error("Unexpected verification error:", err);
-      process.exit(1);
-    });
 }

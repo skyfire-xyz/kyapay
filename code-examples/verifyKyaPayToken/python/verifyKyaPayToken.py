@@ -5,8 +5,6 @@ from jose.exceptions import JWTError
 from decimal import Decimal, InvalidOperation
 import uuid
 import time
-import json
-import sys
 
 """
 Supports production and sandbox.
@@ -176,14 +174,3 @@ def verifyKyaPayToken(token):
 
     # Token validation successful
     return {"success": True, "header": header, "payload": payload}
-
-
-if __name__ == "__main__":
-    token = sys.argv[1] if len(sys.argv) > 1 else None
-    if not token:
-        print("Usage: python3 verifyKyaPayToken.py <JWT>", file=sys.stderr)
-        sys.exit(1)
-
-    result = verifyKyaPayToken(token)
-    print(json.dumps(result, indent=2))
-    sys.exit(0 if result.get("success") else 1)
