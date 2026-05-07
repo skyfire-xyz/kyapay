@@ -10,8 +10,8 @@ export function validateKyaClaims(payload: JWTPayload): VerifyError | null {
   const email = (payload as any)?.hid?.email;
   // email is a valid email address
   if (!validator.isEmail(String(email))) {
-    console.error("Invalid email format");
-    return { success: false, error: "invalid_email", message: "Invalid email format." };
+    console.error("Got email:", email);
+    return { success: false, error: "invalid_email", message: "email must be a valid email address." };
   }
   return null;
 }

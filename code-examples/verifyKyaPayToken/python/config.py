@@ -7,7 +7,7 @@ JWKS_URL = f"{SKYFIRE_ISSUER_BY_ENV[EXPECTED_ENV]}/.well-known/jwks.json"
 
 ALGORITHM = "ES256"
 EXPECTED_TOKEN_TYP = "<TOKEN_TYPE>"  # e.g. "kya-pay+jwt", "kya+jwt", "pay+jwt"
-EXPECTED_AUDIENCE = "<SELLER_AGENT_ID>"
+EXPECTED_AUDIENCE = "<SELLER_AGENT_ID>"  # optional
 
 """
 External seller targeting: tokens carry sdm (seller domain).

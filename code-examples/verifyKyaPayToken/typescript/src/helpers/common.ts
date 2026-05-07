@@ -12,7 +12,7 @@ export function validateHeaderClaims(
   expectedTyp: string
 ): VerifyError | null {
   if (header.typ !== expectedTyp) {
-    console.error("Invalid typ:", header.typ);
+    console.error("Got typ:", header.typ);
     return { success: false, error: "invalid_typ", message: `typ should be ${expectedTyp}` };
   }
   return null;
@@ -20,43 +20,32 @@ export function validateHeaderClaims(
 
 /**
  * Validate standard JWT payload claims present in all token types:
- * env, iat, jti, aud, sub, exp.
+ * env, iat, jti, exp.
  * Returns a VerifyError on failure, or null on success.
  */
 export function validateCommonPayloadClaims(
   payload: JWTPayload,
   expectedEnv: string,
-  expectedAudience: string
 ): VerifyError | null {
   if (payload["env"] !== expectedEnv) {
-    console.error("Invalid environment:", payload["env"]);
+    console.error("Got env:", payload["env"]);
     return { success: false, error: "invalid_env", message: `env must match expected environment (${expectedEnv}).` };
   }
 
   const now = Math.floor(Date.now() / 1000);
 
   if (!isEpochSeconds(payload.iat) || payload.iat > now) {
-    console.error("Invalid iat:", payload.iat);
+    console.error("Got iat:", payload.iat);
     return { success: false, error: "invalid_iat", message: "iat must be a 10-digit epoch seconds value in the past." };
   }
 
   if (!validator.isUUID(String(payload.jti))) {
-    console.error("Invalid jti:", payload.jti);
+    console.error("Got jti:", payload.jti);
     return { success: false, error: "invalid_jti", message: "jti must be a valid UUID." };
   }
 
-  if (payload.aud !== expectedAudience) {
-    console.error("Invalid aud:", payload.aud);
-    return { success: false, error: "invalid_aud", message: `aud must match expected audience (${expectedAudience}).` };
-  }
-
-  if (!validator.isUUID(String(payload.sub))) {
-    console.error("Invalid sub:", payload.sub);
-    return { success: false, error: "invalid_sub", message: "sub must be a valid UUID." };
-  }
-
   if (!isEpochSeconds(payload.exp) || payload.exp < now) {
-    console.error("Invalid exp:", payload.exp);
+    console.error("Got exp:", payload.exp);
     return { success: false, error: "invalid_exp", message: "exp must be a 10-digit epoch seconds value in the future." };
   }
 

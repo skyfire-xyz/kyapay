@@ -18,9 +18,9 @@ import {
   JWKS,
 } from "./config.js";
 import type { VerifyResult } from "./utils.js";
-import { validateHeaderClaims, validateCommonPayloadClaims } from "./validators/common.js";
-import { validateKyaClaims } from "./validators/kya.js";
-import { validatePayClaims } from "./validators/pay.js";
+import { validateHeaderClaims, validateCommonPayloadClaims } from "./helpers/common.js";
+import { validateKyaClaims } from "./helpers/kya.js";
+import { validatePayClaims } from "./helpers/pay.js";
 
 export async function verifyTokenToOnboardedService(token: string): Promise<VerifyResult> {
   let payload: Awaited<ReturnType<typeof jwtVerify>>["payload"];
@@ -30,7 +30,8 @@ export async function verifyTokenToOnboardedService(token: string): Promise<Veri
     const verified = await jwtVerify(token, JWKS, {
       algorithms: [ALGORITHM],
       issuer: SKYFIRE_ISSUER_BY_ENV[EXPECTED_ENV],
-      audience: EXPECTED_AUDIENCE,
+      // optionally, uncomment to validate audience
+      // audience: EXPECTED_AUDIENCE,
     });
     payload = verified.payload;
     header = verified.protectedHeader;
@@ -42,7 +43,7 @@ export async function verifyTokenToOnboardedService(token: string): Promise<Veri
   const headerError = validateHeaderClaims(header, EXPECTED_TOKEN_TYP);
   if (headerError) return headerError;
 
-  const commonError = validateCommonPayloadClaims(payload, EXPECTED_ENV, EXPECTED_AUDIENCE);
+  const commonError = validateCommonPayloadClaims(payload, EXPECTED_ENV);
   if (commonError) return commonError;
 
   // ssi matches expected seller service ID

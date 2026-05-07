@@ -10,14 +10,12 @@ from config import (
     SKYFIRE_ISSUER_BY_ENV,
     JWKS_URL,
     ALGORITHM,
-    EXPECTED_AUDIENCE,
     EXPECTED_TOKEN_TYP,
     EXPECTED_SDM,
 )
 from utils import get_jwks
-from validators.common import validate_header_claims, validate_common_payload_claims
-from validators.kya import validate_kya_claims
-from validators.pay import validate_pay_claims
+from helpers.common import validate_header_claims, validate_common_payload_claims
+from helpers.kya import validate_kya_claims
 
 
 def verifyTokenToExternalSeller(token):
@@ -29,7 +27,7 @@ def verifyTokenToExternalSeller(token):
             jwks,
             algorithms=[ALGORITHM],
             issuer=SKYFIRE_ISSUER_BY_ENV[EXPECTED_ENV],
-            audience=EXPECTED_AUDIENCE,
+            options={"verify_aud": False},
         )
         header = jwt.get_unverified_header(token)
     except JWTError as err:
@@ -39,7 +37,7 @@ def verifyTokenToExternalSeller(token):
     if error := validate_header_claims(header, EXPECTED_TOKEN_TYP):
         return error
 
-    if error := validate_common_payload_claims(payload, EXPECTED_ENV, EXPECTED_AUDIENCE):
+    if error := validate_common_payload_claims(payload, EXPECTED_ENV):
         return error
 
     # sdm matches expected seller domain

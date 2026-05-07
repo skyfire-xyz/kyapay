@@ -10,7 +10,7 @@ export const SKYFIRE_ISSUER_BY_ENV = {
 export const JWKS_URL = `${SKYFIRE_ISSUER_BY_ENV[EXPECTED_ENV]}/.well-known/jwks.json`;
 export const ALGORITHM = "ES256" as const;
 export const EXPECTED_TOKEN_TYP = "<TOKEN_TYPE>";  // e.g. "kya-pay+jwt", "kya+jwt", "pay+jwt"
-export const EXPECTED_AUDIENCE = "<SELLER_AGENT_ID>";
+export const EXPECTED_AUDIENCE = "<SELLER_AGENT_ID>";  // optional
 
 /**
  * External seller targeting: tokens carry sdm (seller domain).
