@@ -7,14 +7,13 @@ import {
   EXPECTED_ENV,
   SKYFIRE_ISSUER_BY_ENV,
   ALGORITHM,
-  EXPECTED_AUDIENCE,
   EXPECTED_TOKEN_TYP,
   EXPECTED_SDM,
   JWKS,
 } from "./config.js";
 import type { VerifyResult } from "./utils.js";
-import { validateHeaderClaims, validateCommonPayloadClaims } from "./validators/common.js";
-import { validateKyaClaims } from "./validators/kya.js";
+import { validateHeaderClaims, validateCommonPayloadClaims } from "./helpers/common.js";
+import { validateKyaClaims } from "./helpers/kya.js";
 
 export async function verifyTokenToExternalSeller(token: string): Promise<VerifyResult> {
   let payload: Awaited<ReturnType<typeof jwtVerify>>["payload"];
@@ -24,7 +23,6 @@ export async function verifyTokenToExternalSeller(token: string): Promise<Verify
     const verified = await jwtVerify(token, JWKS, {
       algorithms: [ALGORITHM],
       issuer: SKYFIRE_ISSUER_BY_ENV[EXPECTED_ENV],
-      audience: EXPECTED_AUDIENCE,
     });
     payload = verified.payload;
     header = verified.protectedHeader;
@@ -36,7 +34,7 @@ export async function verifyTokenToExternalSeller(token: string): Promise<Verify
   const headerError = validateHeaderClaims(header, EXPECTED_TOKEN_TYP);
   if (headerError) return headerError;
 
-  const commonError = validateCommonPayloadClaims(payload, EXPECTED_ENV, EXPECTED_AUDIENCE);
+  const commonError = validateCommonPayloadClaims(payload, EXPECTED_ENV);
   if (commonError) return commonError;
 
   // sdm matches expected seller domain

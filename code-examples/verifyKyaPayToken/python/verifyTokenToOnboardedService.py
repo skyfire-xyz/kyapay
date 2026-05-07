@@ -20,9 +20,9 @@ from config import (
     EXPECTED_SPR,
 )
 from utils import get_jwks
-from validators.common import validate_header_claims, validate_common_payload_claims
-from validators.kya import validate_kya_claims
-from validators.pay import validate_pay_claims
+from helpers.common import validate_header_claims, validate_common_payload_claims
+from helpers.kya import validate_kya_claims
+from helpers.pay import validate_pay_claims
 
 
 def verifyTokenToOnboardedService(token):
@@ -34,7 +34,7 @@ def verifyTokenToOnboardedService(token):
             jwks,
             algorithms=[ALGORITHM],
             issuer=SKYFIRE_ISSUER_BY_ENV[EXPECTED_ENV],
-            audience=EXPECTED_AUDIENCE,
+            options={"verify_aud": False},  # optionally, replace with audience=EXPECTED_AUDIENCE to validate audience
         )
         header = jwt.get_unverified_header(token)
     except JWTError as err:
@@ -44,7 +44,7 @@ def verifyTokenToOnboardedService(token):
     if error := validate_header_claims(header, EXPECTED_TOKEN_TYP):
         return error
 
-    if error := validate_common_payload_claims(payload, EXPECTED_ENV, EXPECTED_AUDIENCE):
+    if error := validate_common_payload_claims(payload, EXPECTED_ENV):
         return error
 
     # ssi matches expected seller service ID
