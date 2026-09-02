@@ -12,11 +12,11 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@types/validator": "^13.15.2",
-    "typescript": "^5.9.2"
+    "@types/validator": "13.15.2",
+    "typescript": "5.9.2"
   },
   "dependencies": {
-    "jose": "^6.0.12",
-    "validator": "^13.15.15"
+    "jose": "6.0.12",
+    "validator": "13.15.15"
   }
 }
